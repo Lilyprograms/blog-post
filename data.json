@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": "ad92",
+      "first_name": "Obinna",
+      "last_name": "Chukwu",
+      "email": "obinnachukwu@gmail.com",
+      "phone": "08141166612",
+      "gender": "male",
+      "pwd": "1212"
+    },
+    {
+      "id": "9ed7",
+      "first_name": "Christian",
+      "last_name": "Onyeka",
+      "email": "christianonyeka@gmail.com",
+      "phone": "07012341234",
+      "gender": "male",
+      "pwd": "2222"
+    },
+    {
+      "id": "7ecf",
+      "first_name": "Esther",
+      "last_name": "Smith",
+      "email": "esthersmith@gmail.com",
+      "phone": "08018291029",
+      "gender": "female",
+      "pwd": "123456"
+    }
+  ],
+  "blogs": [
+    {
+      "id": "a49e",
+      "user_id": "7ecf",
+      "title": "Apple if a fruit",
+      "description": "An apple a day, keeps the doctor away. Eat Apple.",
+      "category_id": "ee09",
+      "likes": 0,
+      "dislikes": 0,
+      "date_created": "4/3/2024"
+    },
+    {
+      "id": "0078",
+      "user_id": "7ecf",
+      "title": "NODE JS Web page has a new look",
+      "description": "The NODE JS Language website has been updated with a new look, and new features for backend developers.",
+      "category_id": "65d5",
+      "likes": 0,
+      "dislikes": 0,
+      "date_created": "4/3/2024"
+    }
+  ],
+  "comments": [],
+  "categories": [
+    {
+      "id": "65d5",
+      "name": "Technology"
+    },
+    {
+      "id": "c4ae",
+      "name": "Fashion"
+    },
+    {
+      "id": "f90c",
+      "name": "Sports"
+    },
+    {
+      "id": "89f1",
+      "name": "Entertainment"
+    },
+    {
+      "id": "ee09",
+      "name": "Food"
+    }
+  ]
+}
