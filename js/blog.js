@@ -3,7 +3,7 @@ $(document).ready(function () {
   let loggedUser = localStorage.getItem("OurBlog_user");
   if (loggedUser) {
     let user_details = JSON.parse(loggedUser);
-    $("#blog_links").prepend(`<button>Logout</button>`);
+    $("#blog_links").prepend(`<button id="logoutBtn">Logout</button>`);
     $("#blog_links").prepend(`<h3>Welcome, ${user_details.first_name} ${user_details.last_name}</h3>`);
   } else {
     $("#blog_links").prepend('<a href="../pages/registration.html" class="link1">Sign Up</a>');
@@ -50,7 +50,7 @@ $(document).ready(function () {
         let output2 = "";
         $(data).each(function (index, element) {
           output1 += `
-        <li><a href="">${element.name}</a></li>
+        <li class="categoryList" data-id="${element.id}">${element.name}</li>
         `;
           output2 += `
           <option value="${element.id}">${element.name}</option>
@@ -58,43 +58,67 @@ $(document).ready(function () {
         });
         $("#category_list").html(output1);
         $("#category").append(output2);
+        filterPostByCategory();
       },
     });
   }
   getCategories();
 
-  $.ajax({
-    url: "http://localhost:3010/blogs",
-    method: "GET",
-    success: function (data) {
-      let output = "";
-      if (data.length > 0) {
-        $(data).each(function (index, post) {
-          output += `
-          <div class="post">
-          <h4 class="post_heading">User. ${post.date_created}</h4>
-          <h3>${post.title}</h3>
-          <p>${post.description}</p>
-          <div class="post_bottom">
-            <div class="post_like">
-              <img src="../images/like.png" alt="Likes" />
-              <p>${post.likes}</p>
+  // Get Blogs
+  function getBlogs(blogUrl) {
+    $.ajax({
+      url: blogUrl,
+      method: "GET",
+      success: function (data) {
+        let output = "";
+        if (data.length > 0) {
+          $(data).each(function (index, post) {
+            output += `
+          <a href="../pages/singleBlog.html?id=${post.id}" class="post">
+            <h4 class="post_heading">${post.user_name}. ${post.date_created}</h4>
+            <h3>${post.title}</h3>
+            <p>${post.description}</p>
+            <button>${post.category_name}</button>
+            <div class="post_bottom">
+              <div class="post_like">
+                <img src="../images/like.png" alt="Likes" />
+                <p>${post.likes}</p>
+              </div>
+              <div class="post_dislike">
+                <img src="../images/dislike.png" alt="Dislikes" />
+                <p>${post.dislikes}</p>
+              </div>
             </div>
-            <div class="post_dislike">
-              <img src="../images/dislike.png" alt="Dislikes" />
-              <p>${post.dislikes}</p>
-            </div>
-          </div>
-        </div>
+          </a>
         `;
-        });
-        $("#posts").html(output);
-      } else {
-        $("#posts").html("<h2>No Posts Created</h2>");
-      }
-    },
-    error: function (err) {
-      console.log(err);
-    },
+          });
+          $("#posts").html(output);
+        } else {
+          $("#posts").html("<h2>No Posts Created</h2>");
+        }
+      },
+      error: function (err) {
+        console.log(err);
+      },
+    });
+  }
+  // Once Page Loads, all blogs will be fetched
+  getBlogs("http://localhost:3010/blogs");
+
+  // Log out a user
+  $("#logoutBtn").click(function () {
+    localStorage.removeItem("OurBlog_user");
+    window.location.reload();
   });
+
+  // Filter a Post By Category
+  function filterPostByCategory() {
+    let list_items = $(".categoryList");
+    $(list_items).each(function (index, item) {
+      $(item).click(function () {
+        let id = $(item).attr("data-id");
+        getBlogs(`http://localhost:3010/blogs?category_id=${id}`);
+      });
+    });
+  }
 });

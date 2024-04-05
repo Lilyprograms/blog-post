@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Blog</title>
+  </head>
+  <body>
+    <div class="blog_container">
+      <nav class="nav">
+        <a href="../pages/blog.html" class="blog_logo"><img src="../images/logo.png" alt="Logo" /></a>
+        <input type="text" placeholder="Search..." />
+        <div class="blog_links" id="blog_links">
+          <a href="../pages/createBlog.html" class="blog_create">
+            <img src="../images/add.png" alt="Add Blog" />
+          </a>
+        </div>
+      </nav>
+      <main class="singleBlog_container">
+        <div id="postContainer"></div>
+        <div class="comments">
+          <form class="comment_form">
+            <div class="form_group">
+              <textarea placeholder="Add Comment.." id="commentInput"></textarea>
+            </div>
+            <button id="commentBtn">Add</button>
+          </form>
+          <!-- All Comments -->
+          <h3 class="comment_heading">Comments (<span id="numberOfComments"></span>)</h3>
+          <div class="comment_body" id="commentBody"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/singleBlog.js"></script>
+  <script src="../js/blog.js"></script>
+</html>

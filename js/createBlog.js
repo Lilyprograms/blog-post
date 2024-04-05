@@ -10,6 +10,7 @@ $(document).ready(function () {
         // Getting data from inputs and storing in an object
         let blog_data = {
           user_id: user_details.id,
+          user_name: user_details.first_name + " " + user_details.last_name,
           title: $("#title").val(),
           description: $("#blog_body").val(),
           category_id: $("#category").val(),

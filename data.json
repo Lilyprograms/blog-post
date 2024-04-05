@@ -30,27 +30,27 @@
   ],
   "blogs": [
     {
-      "id": "a49e",
-      "user_id": "7ecf",
-      "title": "Apple if a fruit",
-      "description": "An apple a day, keeps the doctor away. Eat Apple.",
-      "category_id": "ee09",
-      "likes": 0,
-      "dislikes": 0,
-      "date_created": "4/3/2024"
-    },
-    {
-      "id": "0078",
-      "user_id": "7ecf",
-      "title": "NODE JS Web page has a new look",
-      "description": "The NODE JS Language website has been updated with a new look, and new features for backend developers.",
+      "id": "107c",
+      "user_id": "ad92",
+      "user_name": "Obinna Chukwu",
+      "title": "I am confused of the code, but I will not say anything",
+      "description": "Everything is working, but I do not know how and why it is working.",
       "category_id": "65d5",
       "likes": 0,
       "dislikes": 0,
-      "date_created": "4/3/2024"
+      "date_created": "4/5/2024"
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "id": "468e",
+      "user_id": "9ed7",
+      "user_name": "Christian Onyeka",
+      "body": "You will be fine in Jesus name, Amen 🙏.",
+      "post_id": "107c",
+      "date_commented": "4/5/2024"
+    }
+  ],
   "categories": [
     {
       "id": "65d5",
